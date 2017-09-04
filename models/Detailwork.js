@@ -10,4 +10,4 @@ var DetailWorkSchema = Schema({
 	total: Number,
 });
 
-module.exports = mongoose.model('DetailWork', DetailWorkSchema);
+module.exports = mongoose.model('DetailWork', DetailWorkSchema); 
