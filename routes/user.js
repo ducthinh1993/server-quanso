@@ -39,6 +39,7 @@ router.post('/',function(req,res,next){
 		  comment: req.body.nt7_comment,
 		  birthplace: req.body.nt7_birthplace,
 		  birthday: req.body.nt7_birthday,
+		  position: req.body.nt7_position,
 		  image: req.body.nt7_image,
 		  level:  req.body.nt7_level,
 		  name_level:  req.body.nt7_name_level,
@@ -82,6 +83,7 @@ router.post('/update',function(req,res,next){
 			user.comment =  req.body.nt7_comment || user.comment; 
 			user.birthplace =  req.body.nt7_birthplace || user.birthplace; 
 			user.birthday =  req.body.nt7_birthday || user.birthday; 
+			user.position =  req.body.nt7_position || user.position; 
 			user.image =  req.body.nt7_image || user.image; 
 			user.level =   req.body.nt7_level || user.level; 
 			user.name_level =   req.body.nt7_name_level || user.name_level; 

@@ -11,6 +11,7 @@ var UserSchema = Schema({
   comment:String,
   birthplace: String,
   birthday:String,
+  position:String,
   image:String,
   level: Number,
   name_level: String,

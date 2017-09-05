@@ -91,7 +91,7 @@ router.post("/list",function(req,res,next){
 router.post('/item',function(req,res,next){
 	res.header("Access-Control-Allow-Origin", "*");
 	var id = req.body.nt7_id;
-	Company.findOne({_id: id},function(err, company){
+	Company.findOne({_id: id}).populate("_id_user_leader",{}).exec(function(err, company){
 		if(err){
             res.json({success:false, message:"Lỗi kết nối!"});			
 		}else if(company){
