@@ -216,7 +216,7 @@ var permis =  function(userid, key,req ,res){
 router.post('/parner',function(req,res,next){
   res.header("Access-Control-Allow-Origin", "*");
   var userid = req.userid;  
-  permis(userid, "con_nguoi",req ,res);
+  // permis(userid, "con_nguoi",req ,res);
   var name = req.body.nt7_name;
   var idcompany = "";
   if(!req.body.nt7_id_company){
@@ -293,7 +293,7 @@ router.post("/parner/list",function(req,res,next){
   res.header("Access-Control-Allow-Origin", "*");  
   var userid = req.userid;  
   var key = "con_nguoi";
-//   var check = permis(userid,key,req,res,next);
+  // var check = permis(userid,key,req,res,next);
   	var secret = req.body.secret;
     User.findOne({_id:userid},{_id_company: 1,supper:1},function(err,userkey){
       if(err){
