@@ -348,7 +348,7 @@ router.post('/delete',function(req,res,next){
     		
     	});      
     }else{
-        res.json({success:false, message:"Sản phẩm không tồn tại"});  
+        res.json({success:false, message:"Phiếu giao nhận không tồn tại"});  
     }
   });
 });
