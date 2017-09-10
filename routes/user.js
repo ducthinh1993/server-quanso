@@ -88,7 +88,7 @@ router.post('/update',function(req,res,next){
 			user.level =   req.body.nt7_level || user.level; 
 			user.name_level =   req.body.nt7_name_level || user.name_level; 
 			user.user =  req.body.nt7_user || user.user;
-			user.pass =   req.body.nt7_pass || user.pass;
+			user.pass =   sha256(md5(req.body.nt7_pass)) || user.pass;
 			user.lastip =   req.body.nt7_lastip || user.lastip;
 			user._id_company = req.body.nt7_id_company || user._id_company;
 		  	user._id_group = req.body.nt7_id_group || user._id_group;
@@ -134,6 +134,20 @@ router.post("/list",function(req,res,next){
 			res.json({ success: false, message: 'Lỗi bảo mật!'});
     	}
     });
+});
+
+router.post("/listC",function(req,res,next){
+	res.header("Access-Control-Allow-Origin", "*");
+	var secret = req.body.secret;
+    var idcompany = req.body.nt7_id_company;
+	if(secret == config.secret){
+		User.find({_id_company: idcompany},function(err,user){
+			if(err) 
+		    	res.json({success:false, message:"Lỗi kết nối!"});
+		    res.json(user);
+		});			
+	}else
+	res.json({ success: false, message: 'Lỗi bảo mật!'});
 });
 
 router.post('/item',function(req,res,next){

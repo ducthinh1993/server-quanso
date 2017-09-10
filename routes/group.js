@@ -126,6 +126,20 @@ router.post("/list",function(req,res,next){
     });
 });
 
+router.post("/listC",function(req,res,next){
+  res.header("Access-Control-Allow-Origin", "*");
+  var secret = req.body.secret;
+  var idcompany = req.body.nt7_id_company;
+  if(secret == config.secret){
+      Group.find({_id_company: idcompany},function(err,group){
+      if(err) 
+          res.json({success:false, message:"Lỗi kết nối!"});
+        res.json(group);
+      });      
+  }else
+  res.json({ success: false, message: 'Lỗi bảo mật!'});
+});
+
 router.post('/delete',function(req,res,next){
   res.header("Access-Control-Allow-Origin", "*");
   var id = req.body.nt7_id;
