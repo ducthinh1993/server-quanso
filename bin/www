@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 if (cluster.isMaster) {
 
   var cpuCount = require('os').cpus().length;
-  for (var i = 0; i < cpuCount; i++) {
+  for (var i = 0; i < cpuCount/6; i++) {
     cluster.fork();
   }
   cluster.on('exit', function (worker) {
