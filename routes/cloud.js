@@ -23,12 +23,12 @@ module.exports =  function(type,mess,key,val,token){
             key: key,
             value: val
         },
-        'notification': {
-             title: "NT7solution!",
-             body: mess,
-             icon: "https://nt7solution.com/public/img/logoNT7solution.png",
-             click_action: "https://nt7solution.com",
-           },
+        // 'notification': {
+        //      title: "NT7solution!",
+        //      body: mess,
+        //      icon: "https://nt7solution.com/public/img/logoNT7solution.png",
+        //      click_action: "https://nt7solution.com",
+        //    },
       }
     };
 
