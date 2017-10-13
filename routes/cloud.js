@@ -3,7 +3,7 @@ var router = express.Router();
 var request = require('request');
 
 module.exports =  function(type,mess,key,val,token){
-  	var serverKey = "AIzaSyC5JXbR_LQt_EDRIldLXstQEoxY9oZulUc";
+  	var serverKey = "AAAAR5Bv4M0:APA91bFO98qkRmnH1NBtvxgtNKxoVUvkWZhCp1XSiPvOZmi0QrrZgUzHK3rPlS0SS5Dth1vZfApIMqLAn6OfUemjbwtzTmhCrRkZcXALr1KPo2R1afmriUGyDPGnz7F8emNFlYHI2ziU";
     // var clientToken= "c3SxhTV9wy8:APA91bFsl7ZwukPvp37MkNyKd1RLj2QZ37WRk6zKQjSGvprM4FcpBinnmZQwdfGFSbXkuOVnh99Wmxh0zY-CltOE9md8P5Tu3BRQCRz-hPlzfGA42HFhnMze2-RIbkwLwKK8nxoWSkI3"
     // var clientToken = "fLAnj4rgNBA:APA91bFjM9CsS1z_MhP08Bp0CBrysN9fxuTH25jbZUsHvFXg4AA8jLxYUzafuKMBS6RFPGlcHqGSd6bUF9uN0g52_m_vCdymQI2AG-XgbYVg9s0sK30FEDAlisJjWI7Po3rtlvEUuyIy";
     // Payload message data
