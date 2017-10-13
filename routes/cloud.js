@@ -39,6 +39,7 @@ module.exports =  function(type,mess,key,val,token){
       }
       
       console.log("send notify ok");
+      console.log(token);
         
     });
     
