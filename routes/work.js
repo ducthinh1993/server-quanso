@@ -134,8 +134,12 @@ router.post('/',function(req,res,next){
 					      }
 					      else{
 					      	var name_w = namecreated + " tạo mới công việc " +work.name;
- 							 notify(1,name_w,"work",work._id);
-
+					      	User.findOne({_id:req.body.nt7_id_user_received},function(err,usertk){
+					      		if(usertk){
+					      			notify(1,name_w,"work",work._id,usertk.tokenfb);
+					      		}
+					      	});
+ 							// notify(1,name_w,"work",work._id);
 					      	var wttypework = req.body.nt7_id_type_work;
 					      	if(Array.isArray(wttypework) == true){
 					      		for (var i = 0; i < wttypework.length; i++) {
@@ -346,7 +350,12 @@ router.post('/update',function(req,res,next){
 	            }else{
 	            	// notify
 	            	var name_w = name_created + " cập nhật công việc " +work.name;
- 					notify(1,name_w,"work",work._id);
+	            	User.findOne({_id:work._id_user_received},function(err,usertk){
+			      		if(usertk){
+			      			notify(1,name_w,"work",work._id,usertk.tokenfb);
+			      		}
+			      	});	
+ 					// notify(1,name_w,"work",work._id);
  					// notify
 		            WorkToTypeWork.remove({_id_work: work._id},function(err){
 	        			if(err) {
@@ -474,7 +483,12 @@ router.post("/change",function(req, res,next){
 					    	
 					    		// notify
 				            	var name_w = user.name + " cập nhật trạng thái công việc " +work.name;
-			 					notify(1,name_w,"work",work._id);
+				            	User.findOne({_id:work._id_user_created},function(err,usertk){
+						      		if(usertk){
+						      			notify(1,name_w,"work",work._id,usertk.tokenfb);
+						      		}
+						      	});				            	
+			 					// notify(1,name_w,"work",work._id);
 			 					// notify
 					    		console.log(newstt.type +"====="+ oldstt.type);
 					    		if(newstt.type == "5"){
