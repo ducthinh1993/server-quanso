@@ -19,6 +19,7 @@ var UserSchema = Schema({
   update: { type: Date, default: Date.now },
   user:String,
   pass: String,
+  tokenfb: String,
   supper:  { type: Number, default: 0 },
   lastip: String, lastlogin: Date,
 });

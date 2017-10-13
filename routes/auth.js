@@ -104,6 +104,7 @@ router.get('/mahoa',function(req,res,next){
 router.post('/login',function(req,res,next){
     res.header("Access-Control-Allow-Origin", "*");
     var user = req.body.user;
+    var tokenfb = req.body.token_firebase;
     var pass = sha256(md5(req.body.pass));
     // var pass = req.body.pass;
     var now = Date.now(); //new Date() 
@@ -122,8 +123,10 @@ router.post('/login',function(req,res,next){
 			    	res.json({success: false, message:"Lỗi hệ thống"});
 			    }else if(!group){
 			        res.json({success:false, message:"không tồn tại nhóm!"});
-			    }else{                
-	          		res.json({ success: true, message: 'Đăng nhập thành công', token: token, data : user, permission:group.permission}); 
+			    }else{   
+              user.tokenfb = tokenfb || user.tokenfb;
+              user.save();              
+	          	res.json({ success: true, message: 'Đăng nhập thành công', token: token, data : user, permission:group.permission}); 
 			    }
 	          });
           }else{
@@ -153,6 +156,24 @@ router.use('/', function(req, res, next) {
     return res.status(403).send({ success: false, message: 'No token provided.' });
   }
 });
+
+router.post('/updatetoken',function(req, res, next){
+  res.header("Access-Control-Allow-Origin", "*");  
+  var iduser = req.userid;
+  var tokenfb = req.body.token_firebase;
+  User.findOne({_id: iduser},function(err,user){
+    if(err) {
+      return res.json({ success: false, message: 'lỗi tìm kiếm' });
+    }else if(!user){
+      return res.json({ success: false, message: 'lỗi tìm kiếm' });   
+    }else{
+      user.tokenfb = tokenfb || user.tokenfb;
+      user.save(); 
+      return res.json({ success: true, message: 'update thành công' });
+    }
+  });
+});
+
 router.post('/count',function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   var userid = req.userid;  
